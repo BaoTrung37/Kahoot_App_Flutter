@@ -12,16 +12,31 @@ class HomeView extends ConsumerStatefulWidget {
 }
 
 class _HomeViewState extends ConsumerState<HomeView> {
+  void toogleButton() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const QuestionPageView(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      // appBar: s
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            _buildHeader(),
+            SizedBox(
+              width: double.infinity,
+              child: _buildHeader(),
+            ),
+            const Text(
+              'Bạn hãy chọn một chủ đề dưới đây',
+              style: AppTextStyles.headingSmallLight,
+            ),
             SizedBox(height: size.height * 0.09),
             SizedBox(
               width: size.width * 0.8,
@@ -44,14 +59,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
             AppButton(
               buttonType: ButtonType.first,
               title: 'Tình yêu giới trẻ',
-              onButtonTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const QuestionPageView(),
-                  ),
-                );
-              },
+              onButtonTap: toogleButton,
             ),
             AppButton(
               buttonType: ButtonType.second,
@@ -80,21 +88,21 @@ class _HomeViewState extends ConsumerState<HomeView> {
   }
 
   Widget _buildHeader() {
-    return Row(
+    return Stack(
       children: [
         _buildLogoView(),
-        Expanded(
+        Positioned.fill(
           child: Center(
             child: _buildTitleView(),
           ),
-        )
+        ),
       ],
     );
   }
 
   Widget _buildTitleView() {
     return const Text(
-      'Đây là tiêu đề bài viết =))',
+      'Rocket Studio',
       style: AppTextStyles.headingMedium,
     );
   }

@@ -10,8 +10,8 @@ void main() {
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle('My App');
-    setWindowMaxSize(const Size(1024, 768));
-    setWindowMinSize(const Size(1024, 768));
+    setWindowMaxSize(const Size(1224, 868));
+    setWindowMinSize(const Size(1224, 868));
   }
   runApp(
     const ProviderScope(
