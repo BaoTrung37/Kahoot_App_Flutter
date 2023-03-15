@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kahoot_rocket_studio/presentation/pages/home/home_view.dart';
+import 'package:kahoot_rocket_studio/presentation/resources/app_text_styles.dart';
 
 class SummaryPageView extends ConsumerStatefulWidget {
   const SummaryPageView({
@@ -28,7 +29,10 @@ class _SummaryPageViewState extends ConsumerState<SummaryPageView> {
               child: _buildHeader(context),
             ),
             const SizedBox(height: 60),
-            Text('Bạn đã trả lời đúng: ${widget.totalScore} câu'),
+            Text(
+              'Bạn đã trả lời đúng: ${widget.totalScore} câu',
+              style: AppTextStyles.headingLarge,
+            ),
           ],
         ),
       ),

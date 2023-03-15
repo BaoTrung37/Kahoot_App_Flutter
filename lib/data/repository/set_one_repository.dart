@@ -338,7 +338,7 @@ class SetOneRepository {
       /*--------------- Cau 14 -----------------*/
       Question(
         id: 13,
-        name: '/"Think different/" là slogan của thương hiệu nào?',
+        name: '"Think different" là slogan của thương hiệu nào?',
         answers: [
           Answer(
             id: 0,

@@ -5,6 +5,7 @@ part 'question_page_state.freezed.dart';
 @freezed
 class QuestionPageState with _$QuestionPageState {
   const factory QuestionPageState({
+    @Default(AppStatus.loading) AppStatus status,
     @Default([]) List<Question> questionList,
     @Default('') String questionTitle,
     @Default(0) int currentQuestionIndex,
@@ -12,4 +13,9 @@ class QuestionPageState with _$QuestionPageState {
     @Default(0) int totalScore,
     Question? currentQuestion,
   }) = _QuestionPageState;
+}
+
+enum AppStatus {
+  loading,
+  success,
 }

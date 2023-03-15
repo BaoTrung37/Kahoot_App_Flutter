@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$QuestionPageState {
+  AppStatus get status => throw _privateConstructorUsedError;
   List<Question> get questionList => throw _privateConstructorUsedError;
   String get questionTitle => throw _privateConstructorUsedError;
   int get currentQuestionIndex => throw _privateConstructorUsedError;
@@ -35,7 +36,8 @@ abstract class $QuestionPageStateCopyWith<$Res> {
       _$QuestionPageStateCopyWithImpl<$Res, QuestionPageState>;
   @useResult
   $Res call(
-      {List<Question> questionList,
+      {AppStatus status,
+      List<Question> questionList,
       String questionTitle,
       int currentQuestionIndex,
       int? currentAnswerIndex,
@@ -56,6 +58,7 @@ class _$QuestionPageStateCopyWithImpl<$Res, $Val extends QuestionPageState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = null,
     Object? questionList = null,
     Object? questionTitle = null,
     Object? currentQuestionIndex = null,
@@ -64,6 +67,10 @@ class _$QuestionPageStateCopyWithImpl<$Res, $Val extends QuestionPageState>
     Object? currentQuestion = freezed,
   }) {
     return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AppStatus,
       questionList: null == questionList
           ? _value.questionList
           : questionList // ignore: cast_nullable_to_non_nullable
@@ -101,7 +108,8 @@ abstract class _$$_QuestionPageStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Question> questionList,
+      {AppStatus status,
+      List<Question> questionList,
       String questionTitle,
       int currentQuestionIndex,
       int? currentAnswerIndex,
@@ -120,6 +128,7 @@ class __$$_QuestionPageStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = null,
     Object? questionList = null,
     Object? questionTitle = null,
     Object? currentQuestionIndex = null,
@@ -128,6 +137,10 @@ class __$$_QuestionPageStateCopyWithImpl<$Res>
     Object? currentQuestion = freezed,
   }) {
     return _then(_$_QuestionPageState(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AppStatus,
       questionList: null == questionList
           ? _value._questionList
           : questionList // ignore: cast_nullable_to_non_nullable
@@ -160,7 +173,8 @@ class __$$_QuestionPageStateCopyWithImpl<$Res>
 
 class _$_QuestionPageState implements _QuestionPageState {
   const _$_QuestionPageState(
-      {final List<Question> questionList = const [],
+      {this.status = AppStatus.loading,
+      final List<Question> questionList = const [],
       this.questionTitle = '',
       this.currentQuestionIndex = 0,
       this.currentAnswerIndex,
@@ -168,6 +182,9 @@ class _$_QuestionPageState implements _QuestionPageState {
       this.currentQuestion})
       : _questionList = questionList;
 
+  @override
+  @JsonKey()
+  final AppStatus status;
   final List<Question> _questionList;
   @override
   @JsonKey()
@@ -193,7 +210,7 @@ class _$_QuestionPageState implements _QuestionPageState {
 
   @override
   String toString() {
-    return 'QuestionPageState(questionList: $questionList, questionTitle: $questionTitle, currentQuestionIndex: $currentQuestionIndex, currentAnswerIndex: $currentAnswerIndex, totalScore: $totalScore, currentQuestion: $currentQuestion)';
+    return 'QuestionPageState(status: $status, questionList: $questionList, questionTitle: $questionTitle, currentQuestionIndex: $currentQuestionIndex, currentAnswerIndex: $currentAnswerIndex, totalScore: $totalScore, currentQuestion: $currentQuestion)';
   }
 
   @override
@@ -201,6 +218,7 @@ class _$_QuestionPageState implements _QuestionPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_QuestionPageState &&
+            (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._questionList, _questionList) &&
             (identical(other.questionTitle, questionTitle) ||
@@ -218,6 +236,7 @@ class _$_QuestionPageState implements _QuestionPageState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      status,
       const DeepCollectionEquality().hash(_questionList),
       questionTitle,
       currentQuestionIndex,
@@ -235,13 +254,16 @@ class _$_QuestionPageState implements _QuestionPageState {
 
 abstract class _QuestionPageState implements QuestionPageState {
   const factory _QuestionPageState(
-      {final List<Question> questionList,
+      {final AppStatus status,
+      final List<Question> questionList,
       final String questionTitle,
       final int currentQuestionIndex,
       final int? currentAnswerIndex,
       final int totalScore,
       final Question? currentQuestion}) = _$_QuestionPageState;
 
+  @override
+  AppStatus get status;
   @override
   List<Question> get questionList;
   @override
