@@ -12,11 +12,11 @@ class HomeView extends ConsumerStatefulWidget {
 }
 
 class _HomeViewState extends ConsumerState<HomeView> {
-  void toogleButton() {
+  void toogleButton(int questionId) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const QuestionPageView(),
+        builder: (context) => QuestionPageView(questonId: questionId),
       ),
     );
   }
@@ -58,13 +58,13 @@ class _HomeViewState extends ConsumerState<HomeView> {
           children: [
             AppButton(
               buttonType: ButtonType.first,
-              title: 'Tình yêu giới trẻ',
-              onButtonTap: toogleButton,
+              title: 'Marketing',
+              onButtonTap: () => toogleButton(1),
             ),
             AppButton(
               buttonType: ButtonType.second,
-              title: 'Tình cảm gia đình',
-              onButtonTap: () {},
+              title: 'Văn hóa - Xã hội',
+              onButtonTap: () => toogleButton(2),
             ),
           ],
         ),
@@ -73,13 +73,13 @@ class _HomeViewState extends ConsumerState<HomeView> {
           children: [
             AppButton(
               buttonType: ButtonType.third,
-              title: 'Sở thích khi yêu',
-              onButtonTap: () {},
+              title: 'Toán học',
+              onButtonTap: () => toogleButton(3),
             ),
             AppButton(
               buttonType: ButtonType.fourth,
-              title: 'Chia tay thì phải làm gì',
-              onButtonTap: () {},
+              title: 'Lịch sử - địa lý',
+              onButtonTap: () => toogleButton(4),
             ),
           ],
         ),

@@ -6,6 +6,6 @@ class Answer {
   Answer({
     required this.id,
     required this.name,
-    required this.isCorrect,
+    this.isCorrect = false,
   });
 }

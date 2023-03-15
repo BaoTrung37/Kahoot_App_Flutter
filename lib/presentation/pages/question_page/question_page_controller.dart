@@ -1,6 +1,7 @@
 import 'package:kahoot_rocket_studio/data/repository/set_one_repository.dart';
 import 'package:kahoot_rocket_studio/presentation/pages/question_page/question_page_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 part 'question_page_controller.g.dart';
 
 @riverpod
@@ -12,8 +13,8 @@ class QuestionPageController extends _$QuestionPageController {
     list.shuffle();
     return QuestionPageState(
       questionList: list.take(3).toList(),
-      questionTitle: list[0].name,
-      currentQuestion: list[0],
+      questionTitle: list.first.name,
+      currentQuestion: list.first,
       totalScore: 0,
       currentAnswerIndex: null,
       currentQuestionIndex: 0,

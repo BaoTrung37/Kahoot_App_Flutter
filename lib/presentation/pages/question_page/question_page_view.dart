@@ -1,12 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:kahoot_rocket_studio/presentation/pages/question_page/question_page_controller.dart';
 import 'package:kahoot_rocket_studio/presentation/pages/summary_page/summary_page_view.dart';
 import 'package:kahoot_rocket_studio/presentation/resources/app_text_styles.dart';
 import 'package:kahoot_rocket_studio/presentation/widgets/app_button.dart';
 
 class QuestionPageView extends ConsumerStatefulWidget {
-  const QuestionPageView({super.key});
+  const QuestionPageView({
+    super.key,
+    required this.questonId,
+  });
+
+  final int questonId;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
