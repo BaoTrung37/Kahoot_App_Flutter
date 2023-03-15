@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:kahoot_rocket_studio/presentation/pages/question_page/question_page_controller.dart';
+import 'package:kahoot_rocket_studio/presentation/pages/question_page/question_page_state.dart';
 import 'package:kahoot_rocket_studio/presentation/pages/summary_page/summary_page_view.dart';
 import 'package:kahoot_rocket_studio/presentation/resources/app_text_styles.dart';
 import 'package:kahoot_rocket_studio/presentation/widgets/app_button.dart';
@@ -21,14 +22,17 @@ class QuestionPageView extends ConsumerStatefulWidget {
 }
 
 class _QuestionPageViewState extends ConsumerState<QuestionPageView> {
+  late final _provider = questionPageControllerProvider(widget.questonId);
+  QuestionPageController1 get _controller => ref.read(_provider.notifier);
+  QuestionPageState get _state => ref.watch(_provider);
+
   @override
   void initState() {
-    ref.read(questionPageControllerProvider.notifier).build();
+    Future.delayed(Duration.zero, () async {
+      await _controller.fetchData(widget.questonId);
+    });
     super.initState();
   }
-
-  QuestionPageController get controller =>
-      ref.read(questionPageControllerProvider.notifier);
 
   void onMoveToSummaryScreen(int totalScore) {
     print('Total Score: $totalScore');
@@ -44,39 +48,42 @@ class _QuestionPageViewState extends ConsumerState<QuestionPageView> {
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(questionPageControllerProvider).requireValue;
-    final size = MediaQuery.of(context).size;
-
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            SizedBox(
-              width: double.infinity,
-              child: _buildHeader(context),
-            ),
-            const SizedBox(height: 60),
-            SizedBox(
-              width: size.width * 0.8,
-              height: size.height * 0.50,
-              child: _buildBodyView2(context),
-            ),
-            const SizedBox(height: 30),
-            _buildConfirmButton()
-          ],
-        ),
+      body: (_state.status == AppStatus.loading)
+          ? const Center(child: CircularProgressIndicator())
+          : _buildBody(context),
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: _buildHeader(context),
+          ),
+          const SizedBox(height: 60),
+          SizedBox(
+            width: size.width * 0.8,
+            height: size.height * 0.50,
+            child: _buildBodyView2(context),
+          ),
+          const SizedBox(height: 30),
+          _buildConfirmButton()
+        ],
       ),
     );
   }
 
   Widget _buildConfirmButton() {
-    final currentAnswerIndex =
-        ref.watch(questionPageControllerProvider).value!.currentAnswerIndex;
+    final currentAnswerIndex = ref.watch(_provider).currentAnswerIndex;
     return GestureDetector(
       onTap: () {
         // print('answer: $currentAnswerIndex');
-        controller.onSubmitedAnswer(onMoveToSummaryScreen);
+        _controller.onSubmitedAnswer(onMoveToSummaryScreen);
       },
       child: Visibility(
         visible: currentAnswerIndex != null ? true : false,
@@ -114,8 +121,7 @@ class _QuestionPageViewState extends ConsumerState<QuestionPageView> {
   }
 
   Widget _buildTitleView() {
-    final title =
-        ref.watch(questionPageControllerProvider).value!.questionTitle;
+    final title = ref.watch(_provider).questionTitle;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 150),
       child: Text(
@@ -139,10 +145,8 @@ class _QuestionPageViewState extends ConsumerState<QuestionPageView> {
   }
 
   Widget _buildBodyView2(BuildContext context) {
-    final question =
-        ref.watch(questionPageControllerProvider).value!.currentQuestion;
-    final answerIndex =
-        ref.watch(questionPageControllerProvider).value!.currentAnswerIndex;
+    final question = ref.watch(_provider).currentQuestion;
+    final answerIndex = ref.watch(_provider).currentAnswerIndex;
 
     return GridView.custom(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -164,7 +168,7 @@ class _QuestionPageViewState extends ConsumerState<QuestionPageView> {
             title: answer.name,
             onButtonTap: () {
               print('answer: $index');
-              controller.onAnswerSelected(answer.id);
+              _controller.onAnswerSelected(answer.id);
             },
           );
         },
