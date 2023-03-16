@@ -29,17 +29,43 @@ class _SummaryPageViewState extends ConsumerState<SummaryPageView> {
               width: double.infinity,
               child: _buildHeader(context),
             ),
-            const SizedBox(height: 100),
-            Text(
-              'Bạn đã trả lời đúng: ${widget.totalScore} câu',
-              style: AppTextStyles.headingLarge,
-            ),
-            Lottie.asset(
-              'assets/lotties/42183-congratulation-success-batch.json',
-              width: 200,
-              height: 200,
-              // fit: BoxFit.fill,
-            ),
+            const SizedBox(height: 50),
+            if (widget.totalScore >= 2) ...[
+              const Text(
+                'Chúc mừng bạn',
+                style: AppTextStyles.headingLarge,
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'Bạn đã trả lời đúng: ${widget.totalScore} / 3 câu',
+                style: AppTextStyles.headingLarge,
+              ),
+              const SizedBox(height: 20),
+              Lottie.asset(
+                'assets/lotties/42183-congratulation-success-batch.json',
+                width: 200,
+                height: 200,
+                // fit: BoxFit.fill,
+              ),
+            ],
+            if (widget.totalScore < 2) ...[
+              const Text(
+                'Chia buồn với bạn',
+                style: AppTextStyles.headingLarge,
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'Bạn chỉ trả lời đúng: ${widget.totalScore} / 3 câu',
+                style: AppTextStyles.headingLarge,
+              ),
+              const SizedBox(height: 30),
+              Lottie.asset(
+                'assets/lotties/34175-sad-face.json',
+                width: 200,
+                height: 200,
+                // fit: BoxFit.fill,
+              ),
+            ],
           ],
         ),
       ),

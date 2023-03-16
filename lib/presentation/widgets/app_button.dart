@@ -98,18 +98,3 @@ class AppButton extends StatelessWidget {
     );
   }
 }
-
-// extension ButtonTypeComponent on ButtonType {
-//   int get index {
-//     switch (this) {
-//       case ButtonType.first:
-//         return 0;
-//       case ButtonType.second:
-//         return 1;
-//       case ButtonType.third:
-//         return 2;
-//       case ButtonType.fourth:
-//         return 3;
-//     }
-//   }
-// }

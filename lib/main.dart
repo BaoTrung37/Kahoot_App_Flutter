@@ -9,7 +9,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowTitle('My App');
+    setWindowTitle('Rocket Studio');
     setWindowMaxSize(const Size(1224, 868));
     setWindowMinSize(const Size(1224, 868));
   }
