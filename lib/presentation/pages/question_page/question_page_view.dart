@@ -131,7 +131,7 @@ class _QuestionPageViewState extends ConsumerState<QuestionPageView> {
       child: CircularCountDownTimer(
         width: 50,
         height: 50,
-        duration: 30,
+        duration: 20,
         isReverse: true,
         controller: countDownController,
         fillColor: Colors.orange,
