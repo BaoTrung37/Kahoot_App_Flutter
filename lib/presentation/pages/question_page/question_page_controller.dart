@@ -54,7 +54,7 @@ class QuestionPageController1 extends StateNotifier<QuestionPageState> {
     }
   }
 
-  void onSubmitedAnswer(Function(int totalScore)? callBack) async {
+  void onNextQuestion(Function(int totalScore)? callBack) async {
     onCheckAnswer();
     final currentQuestionIndex = state.currentQuestionIndex + 1;
 
@@ -75,7 +75,8 @@ class QuestionPageController1 extends StateNotifier<QuestionPageState> {
   void onCheckAnswer() {
     final currentQuestion = state.currentQuestion;
     final currentAnswerIndex = state.currentAnswerIndex;
-    final currentAnswer = currentQuestion!.answers[currentAnswerIndex!];
+    if (currentAnswerIndex == null) return;
+    final currentAnswer = currentQuestion!.answers[currentAnswerIndex];
     final totalScore = state.totalScore;
 
     if (currentAnswer.isCorrect) {

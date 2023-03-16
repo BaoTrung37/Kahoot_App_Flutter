@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,6 +26,7 @@ class _QuestionPageViewState extends ConsumerState<QuestionPageView> {
   late final _provider = questionPageControllerProvider(widget.questonId);
   QuestionPageController1 get _controller => ref.read(_provider.notifier);
   QuestionPageState get _state => ref.watch(_provider);
+  final countDownController = CountDownController();
 
   @override
   void initState() {
@@ -83,7 +85,8 @@ class _QuestionPageViewState extends ConsumerState<QuestionPageView> {
     return GestureDetector(
       onTap: () {
         // print('answer: $currentAnswerIndex');
-        _controller.onSubmitedAnswer(onMoveToSummaryScreen);
+        _controller.onNextQuestion(onMoveToSummaryScreen);
+        countDownController.restart();
       },
       child: Visibility(
         visible: currentAnswerIndex != null ? true : false,
@@ -116,7 +119,44 @@ class _QuestionPageViewState extends ConsumerState<QuestionPageView> {
             child: _buildTitleView(),
           ),
         ),
+        _buildCountDownTimer(),
       ],
+    );
+  }
+
+  Widget _buildCountDownTimer() {
+    return Positioned(
+      right: 10,
+      top: 10,
+      child: CircularCountDownTimer(
+        width: 50,
+        height: 50,
+        duration: 30,
+        isReverse: true,
+        controller: countDownController,
+        fillColor: Colors.orange,
+        strokeWidth: 10.0,
+        strokeCap: StrokeCap.round,
+        textStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+        textFormat: CountdownTextFormat.S,
+        fillGradient: null,
+        ringColor: Colors.grey[300]!,
+        isReverseAnimation: true,
+        // isTimerTextShown: true,
+        onStart: () {
+          debugPrint('Countdown Started');
+        },
+        onComplete: () {
+          debugPrint('Countdown Ended');
+          _controller.onNextQuestion(onMoveToSummaryScreen);
+          countDownController.restart();
+        },
+        onChange: (String timeStamp) {
+          debugPrint('Countdown Changed $timeStamp');
+        },
+      ),
     );
   }
 

@@ -13,6 +13,7 @@ void main() {
     setWindowMaxSize(const Size(1224, 868));
     setWindowMinSize(const Size(1224, 868));
   }
+
   runApp(
     const ProviderScope(
       child: MyApp(),
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,

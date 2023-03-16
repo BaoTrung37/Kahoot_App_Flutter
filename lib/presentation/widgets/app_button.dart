@@ -83,6 +83,7 @@ class AppButton extends StatelessWidget {
                 child: Center(
                   child: Text(
                     title,
+                    textAlign: TextAlign.center,
                     style: style ??
                         AppTextStyles.textLargeBold.copyWith(
                           color: Colors.white,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kahoot_rocket_studio/presentation/pages/home/home_view.dart';
 import 'package:kahoot_rocket_studio/presentation/resources/app_text_styles.dart';
+import 'package:lottie/lottie.dart';
 
 class SummaryPageView extends ConsumerStatefulWidget {
   const SummaryPageView({
@@ -28,10 +29,16 @@ class _SummaryPageViewState extends ConsumerState<SummaryPageView> {
               width: double.infinity,
               child: _buildHeader(context),
             ),
-            const SizedBox(height: 60),
+            const SizedBox(height: 100),
             Text(
               'Bạn đã trả lời đúng: ${widget.totalScore} câu',
               style: AppTextStyles.headingLarge,
+            ),
+            Lottie.asset(
+              'assets/lotties/42183-congratulation-success-batch.json',
+              width: 200,
+              height: 200,
+              // fit: BoxFit.fill,
             ),
           ],
         ),
