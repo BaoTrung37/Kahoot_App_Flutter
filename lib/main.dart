@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Rocket Studio Application',
+      title: 'Rocket Studio Game',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

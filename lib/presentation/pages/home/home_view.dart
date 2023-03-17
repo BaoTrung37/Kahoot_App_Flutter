@@ -102,7 +102,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
 
   Widget _buildTitleView() {
     return const Text(
-      'Rocket Studio',
+      'Rocket Studio Game',
       style: AppTextStyles.headingMedium,
     );
   }
