@@ -176,11 +176,11 @@ class SetThreeRepository {
           Answer(
             id: 2,
             name: 'Thứ bảy.',
+            isCorrect: true,
           ),
           Answer(
             id: 3,
             name: 'Chủ nhật.',
-            isCorrect: true,
           ),
         ],
       ),
@@ -376,6 +376,7 @@ class SetThreeRepository {
           Answer(
             id: 1,
             name: '0',
+            isCorrect: true,
           ),
           Answer(
             id: 2,
@@ -384,7 +385,6 @@ class SetThreeRepository {
           Answer(
             id: 3,
             name: 'Không xác định',
-            isCorrect: true,
           ),
         ],
       ),

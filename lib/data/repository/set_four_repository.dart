@@ -198,11 +198,11 @@ class SetFourRepository {
           Answer(
             id: 2,
             name: 'Đồng bằng',
-            isCorrect: true,
           ),
           Answer(
             id: 3,
             name: 'Đồi núi',
+            isCorrect: true,
           ),
         ],
       ),
