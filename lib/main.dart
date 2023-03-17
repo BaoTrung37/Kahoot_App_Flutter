@@ -9,7 +9,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowTitle('Rocket Studio');
+    setWindowTitle('Rocket Studio Application');
     setWindowMaxSize(const Size(1224, 868));
     setWindowMinSize(const Size(1224, 868));
   }
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Rocket Studio Application',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

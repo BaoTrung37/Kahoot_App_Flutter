@@ -112,24 +112,24 @@ class SetThreeRepository {
       Question(
         id: 4,
         name:
-            'Hình dưới đây có bao nhiêu hình tam giác, bao nhiêu hình tứ giác?',
+            'Bạn hãy thực hiện tìm ra số tiếp theo của dãy số: 5, 16, 49, 104, ?.',
         answers: [
           Answer(
             id: 0,
-            name: '4 hình tam giác, 5 hình tứ giác',
+            name: '171',
           ),
           Answer(
             id: 1,
-            name: '4 hình tam giác, 4 hình tứ giác',
+            name: '181',
+            isCorrect: true,
           ),
           Answer(
             id: 2,
-            name: '5 hình tam giác, 4 hình tứ giác',
+            name: '191',
           ),
           Answer(
             id: 3,
-            name: '5 hình tam giác, 5 hình tứ giác',
-            isCorrect: true,
+            name: '201',
           ),
         ],
       ),

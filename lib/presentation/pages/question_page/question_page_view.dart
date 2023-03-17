@@ -162,10 +162,11 @@ class _QuestionPageViewState extends ConsumerState<QuestionPageView> {
 
   Widget _buildTitleView() {
     final title = ref.watch(_provider).questionTitle;
+    final currentQuestion = ref.watch(_provider).currentQuestionIndex + 1;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 150),
       child: Text(
-        title,
+        'Câu số $currentQuestion: $title',
         style: AppTextStyles.headingMedium,
         textAlign: TextAlign.center,
       ),
