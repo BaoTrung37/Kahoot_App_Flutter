@@ -64,7 +64,7 @@ class SetThreeRepository {
         answers: [
           Answer(
             id: 0,
-            name: 'P = 10*m.',
+            name: 'P = 10 * m.',
             isCorrect: true,
           ),
           Answer(
@@ -73,11 +73,11 @@ class SetThreeRepository {
           ),
           Answer(
             id: 2,
-            name: 'P = 0,1*m.',
+            name: 'P = 0,1 * m.',
           ),
           Answer(
             id: 3,
-            name: 'm = 10*P.',
+            name: 'm = 10 * P.',
           ),
         ],
       ),
@@ -264,7 +264,7 @@ class SetThreeRepository {
       Question(
         id: 10,
         name:
-            'Điền cụm từ thích hợp nhất vào chỗ trống: /“Tứ giác có 4 cạnh bằng nhau và 4 góc bằng nhau là …/”',
+            'Điền cụm từ thích hợp nhất vào chỗ trống: “Tứ giác có 4 cạnh bằng nhau và 4 góc bằng nhau là …”',
         answers: [
           Answer(
             id: 0,

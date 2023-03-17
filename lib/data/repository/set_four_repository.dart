@@ -32,7 +32,7 @@ class SetFourRepository {
       /*--------------- Cau2 -----------------*/
       Question(
         id: 1,
-        name: 'Nhiệt độ trung bình năm cao nhất ở',
+        name: 'Nhiệt độ trung bình năm cao nhất ở đâu?',
         answers: [
           Answer(
             id: 0,
